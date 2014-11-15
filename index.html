@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roll, Sucka!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="splash">
+    <p>Roll, Sucka!</p>
+  </div>
+  <header>
+    <h1>Roll, Sucka!</h1>
+  </header>
+  <article>
+    <form>
+      <span>
+        <input type="checkbox" name="stupid" id="stupid">
+        <label for="stupid">
+          Stupid Tricks
+        </label>
+      </span>
+      
+      <span>
+        <input type="checkbox" name="switch" id="switch">
+        <label for="switch">
+          Switch Tricks
+        </label>
+      </span>
+      
+      <span>
+        <input type="checkbox" name="ramp_mode" id="ramp_mode">
+        <label for="ramp_mode">
+          Ramp Mode
+        </label>
+      </span>
+
+      <span>
+        <input type="checkbox" name="spins" id="spins">
+        <label for="spins">
+          Spins
+        </label>
+      </span>
+    </form>
+    <p id="display"></p>
+    <button id="roll">Roll!</button>
+    <button id="exclude">Skip</button>
+    <button id="clear_excluded">Clear Skipped</button>
+  </article>
+  <script src="libs/libs.js"></script>
+  <script> window.dice = {};</script>
+  <script src="data/tricks.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/roller.js"></script>
+  <script src="js/excluder.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
