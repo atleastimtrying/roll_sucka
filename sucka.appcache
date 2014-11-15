@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# Version 0.2
+
+CACHE:
+data/tricks.js
+libs/libs.js
+style.css
+js/app.js
+js/config.js
+js/excluder.js
+js/renderer.js
+js/roller.js
+js/ui.js
