@@ -58,7 +58,7 @@ label:before{
   background:transparent;
 }
 input[type=checkbox]:checked ~ label:before{
-  background:#ccc;
+  background:#648ACD;
 }
 button{
   display:block;
