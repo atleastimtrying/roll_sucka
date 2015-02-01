@@ -1,105 +1,89 @@
+Array.prototype.pluck = function(){
+  return this[Math.floor(Math.random()*this.length)];
+};
+String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+
 window.dice.Roller = function(){
-  var decided = function(){
-    return (Math.random() > 0.5);
-  };
-  
-  var remove_stupid = function(item){
-    return !item.stupid;
+  var get_starting_position = function(){
+    return ["", "fakie"].pluck();
   };
 
-  var remove_switch = function(item){
-    return !(item.name === "switch");
+  var get_circular_motion = function(){
+    return ["", "truespin"].pluck();
   };
 
-  var filter = function(arr){
-    if(!dice.config.stupid_tricks_enabled){
-      arr = _.filter(arr, remove_stupid);
-    }
-    if(!dice.config.switch_tricks_enabled){
-      arr = _.filter(arr, remove_switch);
-    }
-    if(arr.length > 0){
-      return arr;
-    }
+  var get_rotation = function(){
+    return [0, 90, 180, 270, 360].pluck();
   };
 
-  var pluck = function(name){
-    var arr = dice.tricks[name];
-    if(arr.length > 0){
-      arr = filter(arr);
-      var candidate = arr[Math.floor(Math.random() * arr.length)];
-      return candidate.name;
-    }
-  };
+  var get_direction = function(starting_position, circular_motion, rotation){
+    if(starting_position === "fakie"){
+      if(rotation === 0 || rotation === 360){
+        return "alleyoop";
+      }
 
-  var alias = function(response){
-    return response;
-  };
+      if(rotation === 180){
+        return "";
+      }
 
-  var bug_imminent = function(label){
-    //if switch is turned off the h_block array will be empty
-    return(label == "h_block" && !dice.config.switch_tricks_enabled);
-  };
+      if(circular_motion === "truespin" && rotation === 90 || circular_motion !== "truespin" && rotation === 270){
+        return "fs";
+      }
 
-  var ramp_spin = function(label){
-    var angle = Math.ceil(Math.random() * 3) * 180;
-    if(label === "h_block"){
-      return angle;
+      if(circular_motion !== "truespin" && rotation === 90 || circular_motion === "truespin" && rotation === 270){
+        return "bs";
+      }
     }else{
-      return angle - 90;
-    }
-  };
+      if(rotation === 0 || rotation === 360){
+        return "";
+      }
 
-  var ledge_spin = function(label){
-    var angle = Math.ceil(Math.random() * 3) * 180;
-    if(label === "h_block"){
-      return angle + 90;
-    }else{
-      return angle;
-    }
-  };
+      if(rotation === 180){
+        return "alleyoop";
+      };
 
-  var get_labelled_trick = function(label){
-    var response = [];
-    if(dice.config.spins_enabled){
-      if(dice.config.ramp_mode_enabled){
-        response.push(ramp_spin(label));
-      }else{
-        response.push(ledge_spin(label));
+      if(circular_motion === "truespin" && rotation === 90 || circular_motion !== "truespin" && rotation === 270){
+        return "bs";
+      }
+
+      if(circular_motion !== "truespin" && rotation === 90 || circular_motion === "truespin" && rotation === 270){
+        return "fs";
       }
     }
-    var necessary_string = pluck("necessary_" + label + "_variants");
-    if(necessary_string){
-      response.push(necessary_string);
-    }
-    if(decided() && !bug_imminent(label)){
-      response.push(pluck("optional_" + label + "_variants"));
-    }
-    response.push(pluck(label + "_based"));
-    var spaced = response.join(" ");
-    return alias(spaced);
   };
 
-  var get_trick = function(){
-    var label = "h_block";
-    if(decided()){
-      label = "soul";
+  var get_trick = function(direction){
+    if(direction === "fs" || direction === "bs"){
+      return ["royale", "farv", "unity", "ufo", "backslide", "torque slide", "pudd slide", "fast slide"].pluck();
+    }else{
+      return ["soul", "acid soul", "makio", "misou", "sunnyday", "x-grind", "fishbrain", "topsoul", "topacid", "topsunny", "sweatstance"].pluck();
     }
-    return get_labelled_trick(label);
+  };
+
+  var tidy_names = function(name){
+    return name && name !== "" && name !== 0 && name !== 90;
+  };
+
+  var generate_trick = function(){
+    var starting_position = get_starting_position();
+    var circular_motion = get_circular_motion();
+    var rotation = get_rotation();
+    var direction = get_direction(starting_position, circular_motion, rotation);
+    var trick = get_trick(direction);
+    if(rotation <= 90){
+      circular_motion = "";
+    }
+    return [starting_position, rotation, circular_motion, direction, trick].filter(tidy_names).join(" ");
+  };
+
+  var alias = function(trick){
+    var new_trick = trick;
+    return new_trick;
   };
 
   var roll = function(){
-    var trick = get_trick();
-    $(dice).trigger('check_exclusion', {
-      name: trick,
-      complete:function(is_excluded){
-        if(is_excluded){
-          roll();
-        }else{
-          $(dice).trigger('render', trick);
-        }
-      }
-    });
+    var trick = generate_trick();
+    $(dice).trigger('render', alias(trick));
   };
 
   $(dice).on('roll', roll);
