@@ -34,12 +34,20 @@ window.dice.App = function(){
   this.roller = new dice.Roller();
   this.excluder = new dice.Excluder();
   this.animation = new dice.Animation();
+  this.boot_appender = new dice.BootAppender();
   $('#splash').delay(1000).fadeOut('slow');
 };
 
 $(function(){
   window.app = new window.dice.App();
 });
+
+window.dice.BootAppender = function(){
+  $('.feet .left, .feet .right').each(function(index, foot){
+    console.log(foot);
+    $(foot).load('images/boot.svg');
+  });
+};
 
 window.dice.config = {
   stupid_tricks_enabled: false,
