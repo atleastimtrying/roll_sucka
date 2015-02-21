@@ -1,0 +1,25 @@
+button{
+  display:block;
+  padding:0.5em;
+  color:#333;
+  border-radius:2px;
+  width:100%;
+  margin-bottom:0.5em;
+  outline:none;
+  cursor:pointer;
+  transition:background 0.5s ease-out;
+
+  &:hover{
+    background:#ddd;
+  }
+
+  &:active{
+    background:#ccc;
+  }
+
+  &:last-child{
+    margin-bottom:0;
+  }
+
+}
+

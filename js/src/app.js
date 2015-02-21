@@ -3,6 +3,7 @@ window.dice.App = function(){
   this.renderer = new dice.Renderer();
   this.roller = new dice.Roller();
   this.excluder = new dice.Excluder();
+  this.animation = new dice.Animation();
   $('#splash').delay(1000).fadeOut('slow');
 };
 

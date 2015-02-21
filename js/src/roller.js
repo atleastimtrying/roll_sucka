@@ -40,7 +40,7 @@ window.dice.Roller = function(){
 
       if(rotation === 180){
         return "alleyoop";
-      };
+      }
 
       if(circular_motion === "truespin" && rotation === 90 || circular_motion !== "truespin" && rotation === 270){
         return "bs";
@@ -54,9 +54,13 @@ window.dice.Roller = function(){
 
   var get_trick = function(direction){
     if(direction === "fs" || direction === "bs"){
-      return ["royale", "farv", "unity", "ufo", "backslide", "torque slide", "pudd slide", "fast slide"].pluck();
+      return ["royale", "farv"
+      //, "unity", "ufo", "backslide", "torque slide", "pudd slide", "fast slide"
+      ].pluck();
     }else{
-      return ["soul", "acid soul", "makio", "misou", "sunnyday", "x-grind", "fishbrain", "topsoul", "topacid", "topsunny", "sweatstance"].pluck();
+      return ["soul", "acid soul", "makio", "misou", "sunnyday"
+      //, "x-grind", "fishbrain", "topsoul", "topacid", "topsunny", "sweatstance"
+      ].pluck();
     }
   };
 
@@ -73,17 +77,20 @@ window.dice.Roller = function(){
     if(rotation <= 90){
       circular_motion = "";
     }
-    return [starting_position, rotation, circular_motion, direction, trick].filter(tidy_names).join(" ");
+    var names = [starting_position, rotation, circular_motion, direction, trick];
+    return names.filter(tidy_names).join(" ");
   };
 
   var alias = function(trick){
     var new_trick = trick;
+    //new_trick = "fakie truespin 180 acid soul";
     return new_trick;
   };
 
   var roll = function(){
-    var trick = generate_trick();
-    $(dice).trigger('render', alias(trick));
+    var trick = alias(generate_trick());
+    $(dice).trigger('animate', trick);
+    $(dice).trigger('render', trick);
   };
 
   $(dice).on('roll', roll);

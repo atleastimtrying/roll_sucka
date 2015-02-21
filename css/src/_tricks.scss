@@ -1,0 +1,90 @@
+.animate{
+  &.soul{
+    .right{
+      transform: translateX(25px) translateY(50px);
+    }
+    .left{
+      transform: translateX(25px) translateY(-30px) rotate(70deg);
+    }
+    &.acid{
+      .left{
+        transform: translateX(25px) translateY(-30px) rotate(-70deg);
+      }
+    }
+  }
+  &.alleyoop.soul{
+    .right{
+      transform: translateX(25px) translateY(-30px) rotate(-70deg);
+    }
+    .left{
+      transform: translateX(35px) translateY(50px);
+    }
+    &.acid{
+      .right{
+        transform: translateX(25px) translateY(-30px) rotate(70deg);
+      }
+    }
+  }
+
+  &.misou{ 
+    .right{
+      transform: translateX(25px) translateY(-30px);
+    }
+
+    .left{
+      transform: translateX(25px) translateY(50px) rotate(-70deg);
+    }
+  }
+
+  &.alleyoop.misou{ 
+    .right{
+      transform: translateX(25px) translateY(50px) rotate(70deg);
+    }
+
+    .left{
+      transform: translateX(35px) translateY(-30px);
+    }
+  }
+
+  &.sunnyday{ 
+    .right{
+      transform: translateX(25px) translateY(-30px);
+    }
+
+    .left{
+      transform: translateX(25px) translateY(50px) rotate(80deg);
+    }
+  }
+
+  &.alleyoop.sunnyday{ 
+    .right{
+      transform: translateX(25px) translateY(50px) rotate(-80deg);
+    }
+
+    .left{
+      transform: translateX(35px) translateY(-30px);
+    }
+  }
+
+  &.makio{
+    .right{
+      transform: translateX(25px) translateY(50px);
+    }
+    .left{
+      transform: translateX(-45px) translateY(-30px);
+      opacity: 0.4;
+    }
+  }
+
+  &.alleyoop.makio{
+    .right{
+      transform: translateX(95px) translateY(-50px);
+      opacity: 0.4;
+    }
+    .left{
+      transform: translateX(35px) translateY(50px);
+      opacity: 1;
+    }
+  }
+
+}

@@ -1,0 +1,24 @@
+doctype html
+html(manifest='manifest.appcache')
+  head
+    include partials/header.jade
+
+  body
+    #splash
+      p Roll, Sucka!
+
+    header
+      h1 Roll, Sucka!
+
+    article
+      include partials/options.jade
+      p#display
+      section.trick_display
+        .ledge
+        .feet
+          span.left L
+          span.right R
+      button#roll Roll!
+      //-button#exclude Skip
+      //-button#clear_excluded Clear Skipped
+    script(src='roll_sucka.js')

@@ -1,0 +1,30 @@
+html{
+  color:#333;
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:0.5em;
+  background:#333;
+  color:white;
+  text-align: center;
+}
+
+article{
+  padding:1em;
+  max-width:400px;
+  margin:1.7em auto 0;
+  background:#eee;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+
+@media(max-width:400px){
+  body{
+    background:#eee;
+  }
+}

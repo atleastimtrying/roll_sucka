@@ -1,0 +1,17 @@
+.ledge{
+    width:50%;
+    position:absolute;
+    box-sizing:border-box;
+    top:0;
+    left:0;
+    height:100%;
+    border-left: 30px solid white;
+    background:#ccc;
+    transform:translateX(100%) translateY(-100%);
+    transition:transform 0s linear;
+}
+
+.animate .ledge{
+    transform:translateX(100%) translateY(0);
+    transition:transform 4s linear;
+}

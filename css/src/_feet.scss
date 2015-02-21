@@ -1,0 +1,43 @@
+.feet{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100px;
+  height:100px;
+  margin: -50px;
+  transition:transform 0s linear;
+  .left, .right{
+    display:block;
+    width: 40px;
+    height: 80px;
+    background:#333;
+    color:white;
+    text-align:center;
+    position:absolute;
+    top:0;
+    left:0;
+    transition:transform 0s linear;
+  }
+  .left{
+    transform: translateX(0) translateY(10px);
+  }
+
+  .right{
+    transform: translateX(60px) translateY(10px);
+  }
+}
+
+.fakie{
+  .feet{
+    transform: rotate(-180deg);
+  }
+  &.truespin .feet{
+    transform: rotate(180deg);
+  }
+}
+
+.animate .feet,
+.animate .feet .left,
+.animate .feet .right{
+  transition:transform 4s linear;
+}

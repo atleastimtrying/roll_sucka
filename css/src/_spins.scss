@@ -1,0 +1,58 @@
+.animate{
+  &.truespin{
+    &.t180 .feet{
+      transform: rotate(-180deg);
+    }
+
+    &.t270 .feet{
+      transform: rotate(-270deg);
+    }
+
+    &.t360 .feet{
+      transform: rotate(-360deg);
+    }
+  }
+
+  &.fs .feet{
+    transform: rotate(90deg);
+  }
+
+  &.bs .feet{
+    transform: rotate(-90deg);
+  }
+
+  &.t180 .feet{
+    transform: rotate(180deg);
+  }
+
+  &.t270 .feet{
+    transform: rotate(270deg);
+  }
+
+  &.t360 .feet{
+    transform: rotate(360deg);
+  }
+
+  &.fakie{
+    &.truespin{
+      &.t270 .feet{
+        transform: rotate(-90deg);
+      }
+    }
+    &.bs .feet{
+      transform: rotate(-90deg);
+    }
+    &.fs .feet{
+      transform: rotate(-270deg);
+    }
+    &.t180 .feet{
+      transform: rotate(0);
+    }
+    &.t270 .feet{
+      transform: rotate(90deg);
+    }
+    &.t360 .feet{
+      transform: rotate(180deg);
+    }
+  }
+}
