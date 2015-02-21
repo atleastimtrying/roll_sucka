@@ -10,13 +10,13 @@
     display:block;
     width: 40px;
     height: 80px;
-    background:#333;
-    color:white;
-    text-align:center;
     position:absolute;
     top:0;
     left:0;
     transition:transform 0s linear;
+    svg{
+      transform: scale(0.95);
+    }
   }
   .left{
     transform: translateX(0) translateY(10px);
