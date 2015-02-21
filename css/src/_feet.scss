@@ -20,6 +20,10 @@
   }
   .left{
     transform: translateX(0) translateY(10px);
+    border-top-left-radius: 20px 45px;
+    border-top-right-radius: 20px 45px;
+    border-bottom-left-radius: 20px 45px;
+    border-bottom-right-radius: 20px 45px;
   }
 
   .right{
